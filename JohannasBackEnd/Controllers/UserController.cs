@@ -27,6 +27,7 @@ namespace JohannasBackEnd.Controllers
             return "value";
         }
 
+        // Kardos kommentar till sonny
 
         // POST: api/User
         // en metod för att registera en användare
