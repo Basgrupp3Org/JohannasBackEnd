@@ -29,6 +29,7 @@ namespace JohannasBackEnd.Controllers
 
 
         // POST: api/User
+        // en metod för att registera en användare
         public string Post([FromBody] User user)
         {
             bool myBool;
