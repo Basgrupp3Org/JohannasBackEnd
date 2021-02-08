@@ -27,10 +27,22 @@ namespace JohannasBackEnd.Controllers
             return "value";
         }
 
-       
 
-        // POST: api/User
-       
+
+        [Route("api/User/Login")]
+        [HttpPost]
+        public bool Login([FromBody] User user)
+        {
+            bool result;
+            result = UserManager.GetInstance().GetUser(user);
+
+            return result;
+        }
+
+
+
+        [Route("api/User/Register")]
+        [HttpPost]
         public string Post([FromBody] User user)
         {
             bool myBool;
