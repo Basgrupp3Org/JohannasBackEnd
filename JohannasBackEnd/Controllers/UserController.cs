@@ -68,6 +68,7 @@ namespace JohannasBackEnd.Controllers
         // DELETE: api/User/5
         public void Delete(int id)
         {
+            UserManager.GetInstance().DeleteUserByID(id);
         }
     }
 }

@@ -85,16 +85,16 @@ namespace JohannasBackEnd.Managers
 
 
 
-        //    public void DeleteUserByID(int id)
-        //    {
-        //        using (var db = new MyDBContext())
-        //        {
-        //            var user = db.Users.Find(id);
-        //            db.Users.Remove(user);
+        public void DeleteUserByID(int id)
+        {
+            using (var db = new MyDBContext())
+            {
+                var user = db.Users.Find(id);
+                db.Users.Remove(user);
 
-        //            db.SaveChanges();
-        //        }
-        //    }
+                db.SaveChanges();
+            }
+        }
 
         //    public void DeleteUserByName(string name)
         //    {
