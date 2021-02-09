@@ -43,19 +43,11 @@ namespace JohannasBackEnd.Controllers
 
         [Route("api/User/Register")]
         [HttpPost]
-        public string Post([FromBody] User user)
+        public bool Post([FromBody] User user)
         {
             bool myBool;
             myBool = UserManager.GetInstance().CreateUser(user);
-            if (myBool == true)
-            {
-                return "successful";
-            }
-           
-            else
-            {
-                return "unsuccessful";
-            }
+            return myBool;
 
 
         }

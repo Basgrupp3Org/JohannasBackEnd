@@ -15,14 +15,17 @@
 
         protected override void Seed(JohannasBackEnd.Domain.MyDBContext context)
         {
-            context.Users.AddOrUpdate(new User()
-            {
-                UserName = "Admin",
+        //    context.Users.AddOrUpdate(new User()
+        //    {
+        //        UserName = "Admin",
 
-                Password = "Password"
+        //        Password = "Password"
 
 
-            });
+        //    });
+
+
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
