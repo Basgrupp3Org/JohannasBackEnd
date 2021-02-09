@@ -51,7 +51,7 @@ namespace JohannasBackEnd.Controllers
             {
                 return "successful";
             }
-            //hej
+           
             else
             {
                 return "unsuccessful";
