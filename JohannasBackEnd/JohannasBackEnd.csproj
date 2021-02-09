@@ -115,6 +115,10 @@
     <Compile Include="Migrations\202102041225235_initial.designer.cs">
       <DependentUpon>202102041225235_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102091313172_usernameuniq.cs" />
+    <Compile Include="Migrations\202102091313172_usernameuniq.designer.cs">
+      <DependentUpon>202102091313172_usernameuniq.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102041225235_initial.resx">
       <DependentUpon>202102041225235_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102091313172_usernameuniq.resx">
+      <DependentUpon>202102091313172_usernameuniq.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
