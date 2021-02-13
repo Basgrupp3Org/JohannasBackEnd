@@ -9,6 +9,21 @@ namespace JohannasBackEnd.Managers
 {
     public class BudgetManager
     {
+        private static BudgetManager _instance;
+
+        public static BudgetManager GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new BudgetManager();
+            }
+            return _instance;
+        }
+        private BudgetManager()
+        {
+
+        }
+
         public void CreateBudget(Budget budget)
         {
             using (var db = new MyDBContext())
