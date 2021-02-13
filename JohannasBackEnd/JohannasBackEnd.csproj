@@ -98,9 +98,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -117,6 +114,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\BudgetManager.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\202102041225235_initial.cs" />
     <Compile Include="Migrations\202102041225235_initial.designer.cs">
