@@ -111,6 +111,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\BudgetManager.cs" />
+    <Compile Include="Managers\CategoryManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\202102041225235_initial.cs" />
     <Compile Include="Migrations\202102041225235_initial.designer.cs">
@@ -119,6 +120,10 @@
     <Compile Include="Migrations\202102091313172_usernameuniq.cs" />
     <Compile Include="Migrations\202102091313172_usernameuniq.designer.cs">
       <DependentUpon>202102091313172_usernameuniq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102131218251_budgetName.cs" />
+    <Compile Include="Migrations\202102131218251_budgetName.designer.cs">
+      <DependentUpon>202102131218251_budgetName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102091313172_usernameuniq.resx">
       <DependentUpon>202102091313172_usernameuniq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102131218251_budgetName.resx">
+      <DependentUpon>202102131218251_budgetName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
