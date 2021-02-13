@@ -110,6 +110,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\BudgetManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\202102041225235_initial.cs" />
     <Compile Include="Migrations\202102041225235_initial.designer.cs">
