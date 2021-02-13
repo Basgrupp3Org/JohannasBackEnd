@@ -9,6 +9,20 @@ namespace JohannasBackEnd.Managers
 {
     public class CategoryManager
     {
+        private static CategoryManager _instance;
+
+        public static CategoryManager GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new CategoryManager();
+            }
+            return _instance;
+        }
+        private CategoryManager()
+        {
+
+        }
         public void CreateCategory(Category category)
         {
             using (var db = new MyDBContext())
@@ -18,23 +32,23 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public void DeleteCategory(string Name)
+        public void DeleteCategory(string name)
         {
             using (var db = new MyDBContext())
             {
-                if(db.Categories.Find(Name) != null)
+                if(db.Categories.Find(name) != null)
                 {
-                    db.Categories.Remove(db.Categories.Find(Name));
+                    db.Categories.Remove(db.Categories.Find(name));
                     db.SaveChanges();
                 }
             }
         }
 
-        public Category GetCategoryByName(string Name)
+        public Category GetCategoryByName(string name)
         {
             using (var db = new MyDBContext())
             {
-                var category = db.Categories.Find(Name);
+                var category = db.Categories.Find(name);
                 return category;
             }
         }

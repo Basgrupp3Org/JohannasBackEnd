@@ -103,6 +103,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Domain\Models\Balance.cs" />
     <Compile Include="Domain\Models\Budget.cs" />
