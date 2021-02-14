@@ -7,7 +7,6 @@ namespace JohannasBackEnd.Domain.Models
 {
     public class Budget : Entity
     {
-
         public string BudgetName { get; set; }
         public decimal BudgetSum { get; set; }
         public DateTime StartDate { get; set; }
