@@ -27,8 +27,14 @@ namespace JohannasBackEnd.Controllers
         }
 
         // POST: api/Category
+        [Route("api/Category/CreateCategory")]
+        [HttpPost]
         public void Post([FromBody]Category category)
         {
+            var newCat = category;
+
+            newCat.Name = category.
+
             CategoryManager.GetInstance().CreateCategory(category);
         }
 
