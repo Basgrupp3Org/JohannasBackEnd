@@ -31,9 +31,6 @@ namespace JohannasBackEnd.Controllers
         [HttpPost]
         public void Post([FromBody]Category category)
         {
-            var newCat = category;
-
-            newCat.Name = category.
 
             CategoryManager.GetInstance().CreateCategory(category);
         }
