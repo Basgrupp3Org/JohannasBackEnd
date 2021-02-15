@@ -53,5 +53,15 @@ namespace JohannasBackEnd.Managers
                 return budget;
             }
         }
+
+        public IEnumerable<Budget> GetBudgetList(string user)
+        {
+            using (var db = new MyDBContext())
+            {
+                var person = db.Users.Where(u => u.UserName == user).FirstOrDefault();
+                var budgets = db.Budgets.Where(b => b.User == person).ToList();
+                return budgets;
+            }
+        }
     }
 }

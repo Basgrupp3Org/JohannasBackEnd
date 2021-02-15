@@ -14,9 +14,11 @@ namespace JohannasBackEnd.Controllers
     public class BudgetController : ApiController
     {
         // GET: api/Budget
-        public IEnumerable<string> Get()
+        [Route("api/Budget/GetBudgetList")]
+        [HttpPost]
+        public IEnumerable<Budget> Get([FromBody] string user)
         {
-            return new string[] { "value1", "value2" };
+            return BudgetManager.GetInstance().GetBudgetList(user);
         }
 
         // GET: api/Budget/5
