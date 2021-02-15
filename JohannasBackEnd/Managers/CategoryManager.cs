@@ -25,8 +25,13 @@ namespace JohannasBackEnd.Managers
         }
         public void CreateCategory(Category category)
         {
+
+
+            string users = category.User.ToString();
             using (var db = new MyDBContext())
             {
+                var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
+                category.User = person;
                 db.Categories.Add(category);
                 db.SaveChanges();
             }
