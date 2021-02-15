@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace JohannasBackEnd.Managers
 {
@@ -25,9 +27,10 @@ namespace JohannasBackEnd.Managers
         }
         public void CreateCategory(Category category)
         {
+           
 
+            string users = category.User.UserName;
 
-            string users = category.User.ToString();
             using (var db = new MyDBContext())
             {
                 var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
