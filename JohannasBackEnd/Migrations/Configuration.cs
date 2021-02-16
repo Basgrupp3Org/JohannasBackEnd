@@ -15,6 +15,16 @@
 
         protected override void Seed(JohannasBackEnd.Domain.MyDBContext context)
         {
+
+            context.Balances.AddOrUpdate(new Balance()
+            {
+                Sum = 10,
+                Date = DateTime.Now,
+                BalanceLabel = "Salary",
+                User = context.Users.Where(u => u.UserName == "Kardo").FirstOrDefault()
+
+
+            }); 
         //    context.Users.AddOrUpdate(new User()
         //    {
         //        UserName = "Admin",

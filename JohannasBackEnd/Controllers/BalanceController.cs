@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace JohannasBackEnd.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BalanceController : ApiController
     {
         // GET: api/Balance
@@ -18,9 +20,11 @@ namespace JohannasBackEnd.Controllers
         }
 
         // GET: api/Balance/5
-        public Balance Get(int id)
+        [Route("api/Balance/GetBalanceByUser")]
+        [HttpPost]
+        public decimal Get([FromBody] string Username)
         {
-            var balance = BalanceManager.GetInstance().GetBalanceById(id);
+            decimal balance = BalanceManager.GetInstance().GetBalanceByUser(Username);
             return balance;
         }
 
