@@ -23,7 +23,7 @@ namespace JohannasBackEnd.Managers
         }
         private BalanceManager()
         {
-            Result = 0;
+            
         }
 
         public void CreateBalance(Balance balance)
