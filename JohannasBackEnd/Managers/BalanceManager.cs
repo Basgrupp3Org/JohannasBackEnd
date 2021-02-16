@@ -10,7 +10,7 @@ namespace JohannasBackEnd.Managers
     public class BalanceManager
     {
         private static BalanceManager _instance;
-        private decimal Result;
+       
 
         public static BalanceManager GetInstance()
         {
@@ -48,26 +48,25 @@ namespace JohannasBackEnd.Managers
         }
 
 
-        public decimal GetBalanceByUser(string Username)
+        public decimal GetBalanceByUser(string UserName)
         {
             
             using (var db = new MyDBContext())
             {
-                //var person = db.Users.Where(u => u.UserName == Username).FirstOrDefault();
-
-                //List<Balance> balance = db.Balances.Where(b => b.User == person).ToList();
-
                 var balances = db.Balances
-                    .Where(b => b.User.UserName == Username).AsEnumerable();
+                    .Where(b => b.User.UserName == UserName).AsEnumerable();
 
-
+                var result = 0m;
 
                 foreach (var item in balances)
                 {
-                    Result += item.Sum;
+                    result += item.Sum;
                 }
-                return Result;
+                
+                return result;
             }
         }
+
+      
     }
 }

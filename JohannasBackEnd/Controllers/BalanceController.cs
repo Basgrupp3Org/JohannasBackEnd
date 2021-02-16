@@ -22,9 +22,9 @@ namespace JohannasBackEnd.Controllers
         // GET: api/Balance/5
         [Route("api/Balance/GetBalanceByUser")]
         [HttpPost]
-        public decimal Get([FromBody] string Username)
+        public decimal Get([FromBody] string UserName)
         {
-            decimal balance = BalanceManager.GetInstance().GetBalanceByUser(Username);
+            decimal balance = BalanceManager.GetInstance().GetBalanceByUser(UserName);
             return balance;
         }
 
