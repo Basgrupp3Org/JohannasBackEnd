@@ -16,23 +16,23 @@
         protected override void Seed(JohannasBackEnd.Domain.MyDBContext context)
         {
 
-            context.Balances.AddOrUpdate(new Balance()
-            {
-                Sum = 10,
-                Date = DateTime.Now,
-                BalanceLabel = "Salary",
-                User = context.Users.Where(u => u.UserName == "Kardo").FirstOrDefault()
+            //context.Balances.AddOrUpdate(new Balance()
+            //{
+            //    Sum = 10,
+            //    Date = DateTime.Now,
+            //    BalanceLabel = "Salary",
+            //    User = context.Users.Where(u => u.UserName == "Conny").FirstOrDefault()
 
 
-            }); 
-        //    context.Users.AddOrUpdate(new User()
-        //    {
-        //        UserName = "Admin",
+            //});
+            //    context.Users.AddOrUpdate(new User()
+            //    {
+            //        UserName = "Admin",
 
-        //        Password = "Password"
+            //        Password = "Password"
 
 
-        //    });
+            //    });
 
 
 

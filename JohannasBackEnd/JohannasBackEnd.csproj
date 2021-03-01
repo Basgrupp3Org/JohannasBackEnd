@@ -130,6 +130,7 @@
     <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Domain\Models\Balance.cs" />
     <Compile Include="Domain\Models\Budget.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Managers\BalanceManager.cs" />
     <Compile Include="Managers\BudgetManager.cs" />
     <Compile Include="Managers\CategoryManager.cs" />
+    <Compile Include="Managers\PurchaseManager.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Migrations\202102041225235_initial.cs" />
     <Compile Include="Migrations\202102041225235_initial.designer.cs">
