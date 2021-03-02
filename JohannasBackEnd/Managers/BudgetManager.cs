@@ -26,8 +26,12 @@ namespace JohannasBackEnd.Managers
 
         public void CreateBudget(Budget budget)
         {
+            string users = budget.User.UserName;
+
             using (var db = new MyDBContext())
             {
+                var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
+                budget.User = person;
                 db.Budgets.Add(budget);
                 db.SaveChanges();
             }
@@ -54,12 +58,13 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public IEnumerable<Budget> GetBudgetList(string user)
+        public IEnumerable<Budget> GetBudgetList(string UserName)
         {
             using (var db = new MyDBContext())
             {
-                var person = db.Users.Where(u => u.UserName == user).FirstOrDefault();
-                var budgets = db.Budgets.Where(b => b.User == person).ToList();
+                var budgets = db.Budgets
+                    .Where(b => b.User.UserName == UserName).AsEnumerable();
+
                 return budgets;
             }
         }
