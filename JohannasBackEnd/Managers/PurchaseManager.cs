@@ -28,8 +28,12 @@ namespace JohannasBackEnd.Managers
 
         public void CreatePurchase(Purchase purchase)
         {
+            string users = purchase.User.UserName;
+
             using (var db = new MyDBContext())
             {
+                var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
+                purchase.User = person;
                 db.Purchases.Add(purchase);
                 db.SaveChanges();
             }
