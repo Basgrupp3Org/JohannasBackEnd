@@ -16,9 +16,9 @@ namespace JohannasBackEnd.Controllers
         // GET: api/Budget
         [Route("api/Budget/GetBudgetList")]
         [HttpPost]
-        public IEnumerable<Budget> Get([FromBody] string user)
+        public IEnumerable<Budget> Get([FromBody] string UserName)
         {
-            return BudgetManager.GetInstance().GetBudgetList(user);
+            return BudgetManager.GetInstance().GetBudgetList(UserName);
         }
 
         // GET: api/Budget/5
@@ -27,8 +27,10 @@ namespace JohannasBackEnd.Controllers
             var budget = BudgetManager.GetInstance().GetBudgetById(id);
             return budget;
         }
-
+        
         // POST: api/Budget
+        [Route("api/Budget/CreateBudget")]
+        [HttpPost]
         public void Post([FromBody] Budget budget)
         {
            BudgetManager.GetInstance().CreateBudget(budget);
