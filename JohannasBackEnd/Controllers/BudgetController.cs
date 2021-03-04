@@ -1,4 +1,5 @@
 ﻿using JohannasBackEnd.Domain.Models;
+using JohannasBackEnd.Domain.DTOs;
 using JohannasBackEnd.Managers;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace JohannasBackEnd.Controllers
         // GET: api/Budget
         [Route("api/Budget/GetBudgetList")]
         [HttpPost]
-        public IEnumerable<Budget> Get([FromBody] string UserName)
+        public IEnumerable<BudgetDTO> Get([FromBody] string UserName)
         {
             return BudgetManager.GetInstance().GetBudgetList(UserName);
         }
