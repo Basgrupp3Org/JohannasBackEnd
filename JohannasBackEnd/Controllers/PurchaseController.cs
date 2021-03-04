@@ -7,16 +7,26 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.UI;
+using static System.Net.WebRequestMethods;
+using System.Net.Http.Headers;
+using System.Web;
 
 namespace JohannasBackEnd.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*", exposedHeaders: "*")]
+
+
     public class PurchaseController : ApiController
     {
+     
+
         // GET: api/Purchase
-        public IEnumerable<string> Get()
+        [Route("api/Purchase/GetPurchaseList")]
+        [HttpPost]
+        public IEnumerable<Purchase> Get([FromBody] string userName)
         {
-            return new string[] { "value1", "value2" };
+           return PurchaseManager.GetInstance().GetAllPurchases(userName);
         }
 
         // GET: api/Purchase/5

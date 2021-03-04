@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Net.Http.Headers;
 
 namespace JohannasBackEnd
 {
@@ -19,6 +21,7 @@ namespace JohannasBackEnd
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
         }
     }
 }
