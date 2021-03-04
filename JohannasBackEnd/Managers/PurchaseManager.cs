@@ -2,6 +2,7 @@
 using JohannasBackEnd.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -54,6 +55,15 @@ namespace JohannasBackEnd.Managers
                 var purchase = db.Purchases.Find(id);
                 return purchase;
             }
+        }
+        public IEnumerable<Purchase> GetAllPurchases(string userName)
+        {
+            var listOfPurchases = new List<Purchase>();
+            using (var db = new MyDBContext())
+            {
+                listOfPurchases = db.Purchases.Where(p => p.User.UserName == userName).ToList();
+            }
+            return listOfPurchases;
         }
     }
 }
