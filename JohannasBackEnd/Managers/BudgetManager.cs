@@ -1,4 +1,5 @@
-﻿using JohannasBackEnd.Domain;
+﻿using JohannasBackEnd.Domain.DTOs;
+using JohannasBackEnd.Domain;
 using JohannasBackEnd.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -58,14 +59,28 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public IEnumerable<Budget> GetBudgetList(string UserName)
+        public IEnumerable<BudgetDTO> GetBudgetList(string UserName)
         {
             using (var db = new MyDBContext())
             {
-                var budgets = db.Budgets
-                    .Where(b => b.User.UserName == UserName).AsEnumerable();
+                var returnList = new List<BudgetDTO>();
+                var budgets = db.Budgets.Where(x => x.User.UserName == UserName).ToList();
 
-                return budgets;
+                foreach (var item in budgets)
+                {
+                    returnList.Add(
+                    new BudgetDTO
+                    {
+                        BudgetName = item.BudgetName,
+                        BudgetSum = item.BudgetSum,
+                        StartDate = item.StartDate,
+                        EndDate = item.EndDate,
+                        User = item.User.UserName
+                    });
+
+                }
+
+                return returnList;
             }
         }
     }
