@@ -29,6 +29,8 @@ namespace JohannasBackEnd.Controllers
         }
 
         // POST: api/Balance
+        [Route("api/Balance/SetBalanceByUser")]
+        [HttpPost]
         public void Post([FromBody]Balance balance)
         {
             BalanceManager.GetInstance().CreateBalance(balance);

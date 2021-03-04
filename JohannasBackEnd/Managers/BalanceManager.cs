@@ -28,8 +28,12 @@ namespace JohannasBackEnd.Managers
 
         public void CreateBalance(Balance balance)
         {
+            string users = balance.User.UserName;
+
             using (var db = new MyDBContext())
             {
+                var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
+                balance.User = person;
                 db.Balances.Add(balance);
                 db.SaveChanges();
             }
