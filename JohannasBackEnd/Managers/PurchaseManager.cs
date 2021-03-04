@@ -1,6 +1,7 @@
 
 ﻿using JohannasBackEnd.Domain;
 using JohannasBackEnd.Domain.Models;
+using JohannasBackEnd.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -61,14 +62,34 @@ namespace JohannasBackEnd.Managers
                 return purchase;
             }
         }
-        public IEnumerable<Purchase> GetAllPurchases(string userName)
+        public IEnumerable<PurchaseDTO> GetAllPurchases(string userName)
         {
-            var listOfPurchases = new List<Purchase>();
+            
             using (var db = new MyDBContext())
             {
-                listOfPurchases = db.Purchases.Where(p => p.User.UserName == userName).ToList();
+                var returnList = new List<PurchaseDTO>();
+                var purchases = db.Purchases.Where(x => x.User.UserName == userName).ToList();
+
+                foreach(var item in purchases)
+                {
+                    returnList.Add(
+                    new PurchaseDTO
+                    {
+                        Price = item.Price,
+                        PurchaseName = item.PurchaseName,
+                        Date = item.Date,
+                        User = item.User.UserName
+                    });
+
+                }
+
+                return returnList;
+
+
+
+
             }
-            return listOfPurchases;
+           
         }
     }
 

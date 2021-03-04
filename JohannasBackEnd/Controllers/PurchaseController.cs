@@ -1,4 +1,5 @@
-﻿using JohannasBackEnd.Domain.Models;
+﻿using JohannasBackEnd.Domain.DTOs;
+using JohannasBackEnd.Domain.Models;
 using JohannasBackEnd.Managers;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,6 @@ using System.Web;
 namespace JohannasBackEnd.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*", exposedHeaders: "*")]
-
-
     public class PurchaseController : ApiController
     {
      
@@ -24,7 +23,7 @@ namespace JohannasBackEnd.Controllers
         // GET: api/Purchase
         [Route("api/Purchase/GetPurchaseList")]
         [HttpPost]
-        public IEnumerable<Purchase> Get([FromBody] string userName)
+        public IEnumerable<PurchaseDTO> Get([FromBody] string userName)
         {
            return PurchaseManager.GetInstance().GetAllPurchases(userName);
         }
