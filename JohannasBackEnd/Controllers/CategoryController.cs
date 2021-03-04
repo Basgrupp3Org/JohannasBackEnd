@@ -27,7 +27,7 @@ namespace JohannasBackEnd.Controllers
         }
 
         // POST: api/Category
-        [Route("api/Category/CreateCategory")]
+        [Route("api/Category/")]
         [HttpPost]
         public void Post([FromBody]Category category)
         {
