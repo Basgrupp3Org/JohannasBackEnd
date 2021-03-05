@@ -77,7 +77,7 @@ namespace JohannasBackEnd.Managers
                     {
                         Price = item.Price,
                         PurchaseName = item.PurchaseName,
-                        Date = item.Date,
+                        Date = item.Date.ToString("yyyy-MM-dd"),
                         User = item.User.UserName
                     });
 
