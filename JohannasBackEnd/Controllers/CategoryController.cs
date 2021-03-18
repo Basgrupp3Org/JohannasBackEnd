@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using JohannasBackEnd.Domain.DTOs;
 using JohannasBackEnd.Domain.Models;
 using JohannasBackEnd.Managers;
 
@@ -14,15 +15,17 @@ namespace JohannasBackEnd.Controllers
     public class CategoryController : ApiController
     {
         // GET: api/Category
-        public IEnumerable<string> Get()
+        [Route("api/Category/GetCategoryList")]
+        [HttpPost]
+        public IEnumerable<CategoryDTO> Get([FromBody] string userName)
         {
-            return new string[] { "value1", "value2" };
+            return CategoryManager.GetInstance().GetCategoryList(userName);
         }
 
         // GET: api/Category/5
-        public Category Get(string name)
+        public Category Get(int id)
         {
-          var category = CategoryManager.GetInstance().GetCategoryByName(name);
+            var category = CategoryManager.GetInstance().GetCategoryById(id);
             return category;
         }
 
@@ -31,19 +34,20 @@ namespace JohannasBackEnd.Controllers
         [HttpPost]
         public void Post([FromBody]Category category)
         {
-            
             CategoryManager.GetInstance().CreateCategory(category);
         }
 
         // PUT: api/Category/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put([FromBody] Category category)
         {
+            CategoryManager.GetInstance().UpdateCategory(category);
         }
 
         // DELETE: api/Category/5
-        public void Delete(string name)
+        public void Delete(int id)
         {
-            CategoryManager.GetInstance().DeleteCategory(name);
+            CategoryManager.GetInstance().DeleteCategory(id);
         }
     }
 }

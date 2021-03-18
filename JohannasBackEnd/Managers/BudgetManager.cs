@@ -75,7 +75,8 @@ namespace JohannasBackEnd.Managers
                         BudgetSum = item.BudgetSum,
                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
                         EndDate = item.EndDate.ToString("yyyy-MM-dd"),
-                        User = item.User.UserName
+                        User = item.User.UserName,
+                        Categories = item.Categories
                     });
 
                 }
