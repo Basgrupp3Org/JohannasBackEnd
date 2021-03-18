@@ -91,6 +91,40 @@ namespace JohannasBackEnd.Managers
             }
            
         }
+
+        public IEnumerable<PurchaseDTO> GetAllPurchases(PurchaseDateRequestDTO rq)
+        {
+
+            using (var db = new MyDBContext())
+            {
+                var returnList = new List<PurchaseDTO>();
+                var purchases = db.Purchases.Where(x => x.User.UserName == rq.User.UserName).ToList();
+
+                foreach(var item in purchases)
+                {
+                    if(item.Date > rq.FromDate && item.Date < rq.ToDate)
+                    {
+                        
+                            returnList.Add(
+                            new PurchaseDTO
+                            {
+                                Price = item.Price,
+                                PurchaseName = item.PurchaseName,
+                                Date = item.Date.ToString("yyyy-MM-dd"),
+                                User = item.User.UserName
+                            });
+
+                        
+                    } 
+                }
+
+                
+
+                return returnList;
+
+            }
+
+        }
     }
 
 }

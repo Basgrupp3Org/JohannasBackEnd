@@ -28,6 +28,14 @@ namespace JohannasBackEnd.Controllers
            return PurchaseManager.GetInstance().GetAllPurchases(userName);
         }
 
+        // GET: api/Purchase
+        [Route("api/Purchase/GetPurchaseListByDate")]
+        [HttpPost]
+        public IEnumerable<PurchaseDTO> Get([FromBody] PurchaseDateRequestDTO rq)
+        {
+            return PurchaseManager.GetInstance().GetAllPurchases(rq);
+        }
+
         // GET: api/Purchase/5
         public Purchase Get(int id)
         {
