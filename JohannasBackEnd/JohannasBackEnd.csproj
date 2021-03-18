@@ -133,6 +133,7 @@
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Domain\DTOs\BudgetDTO.cs" />
+    <Compile Include="Domain\DTOs\PurchaseDateRequestDTO.cs" />
     <Compile Include="Domain\DTOs\PurchaseDTO.cs" />
     <Compile Include="Domain\Models\Balance.cs" />
     <Compile Include="Domain\Models\Budget.cs" />
