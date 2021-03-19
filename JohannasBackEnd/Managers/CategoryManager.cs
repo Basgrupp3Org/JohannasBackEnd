@@ -93,6 +93,7 @@ namespace JohannasBackEnd.Managers
                     returnList.Add(
                     new CategoryDTO
                     {
+                        Id = item.Id,
                         MaxSpent = item.MaxSpent,
                         CurrentSpent = item.CurrentSpent,
                         Name = item.Name,
