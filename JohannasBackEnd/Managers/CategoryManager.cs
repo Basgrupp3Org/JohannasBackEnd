@@ -43,13 +43,16 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public void DeleteCategory(int id)
+        public void DeleteCategory(DeleteCategoryRequestDTO rq)
         {
+
             using (var db = new MyDBContext())
             {
-                if(db.Categories.Find(id) != null)
+                var x = db.Categories.Find(rq.Id);
+                if(x != null && x.User.UserName == rq.User.UserName)
                 {
-                    db.Categories.Remove(db.Categories.Find(id));
+
+                    db.Categories.Remove(x);
                     db.SaveChanges();
                 }
             }

@@ -45,9 +45,11 @@ namespace JohannasBackEnd.Controllers
         }
 
         // DELETE: api/Category/5
-        public void Delete(int id)
+        [Route("api/Category/Delete")]
+        [HttpPost]
+        public void Delete([FromBody] DeleteCategoryRequestDTO rq)
         {
-            CategoryManager.GetInstance().DeleteCategory(id);
+            CategoryManager.GetInstance().DeleteCategory(rq);
         }
     }
 }
