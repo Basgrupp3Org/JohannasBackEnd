@@ -43,6 +43,12 @@ namespace JohannasBackEnd.Controllers
         {
            BudgetManager.GetInstance().CreateBudget(budget);
         }
+        [Route("api/Budget/SetCategoryForBudget")]
+        [HttpPost]
+        public void SetCategoryForBudget([FromBody] SetCategoryOnBudgetDTO x)
+        {
+            BudgetManager.GetInstance().SetCategoryForBudget(x);
+        }
 
         // PUT: api/Budget/5
         public void Put(int id, [FromBody]string value)

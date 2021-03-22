@@ -68,6 +68,8 @@ namespace JohannasBackEnd.Managers
             }
         }
 
+       
+
         public void UpdateCategory(Category category)
         {
             using (var db = new MyDBContext())
