@@ -95,7 +95,8 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var budgets = db.Budgets.Where(x => x.Id == dto.Budget.Id && x.User.UserName == dto.User.UserName).FirstOrDefault();
-                budgets.Categories.Add(dto.Category);
+                var category = db.Categories.Where(x => x.Id == dto.Category.Id && x.User.UserName == dto.User.UserName).FirstOrDefault();
+                budgets.Categories.Add(category);
                 db.SaveChanges();
             }
         }
