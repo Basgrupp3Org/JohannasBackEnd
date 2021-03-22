@@ -29,10 +29,10 @@ namespace JohannasBackEnd.Controllers
         // POST: api/Category
         [Route("api/Category/")]
         [HttpPost]
-        public void Post([FromBody]Category category)
+        public void Post([FromBody]Category category, Budget budget)
         {
             
-            CategoryManager.GetInstance().CreateCategory(category);
+            CategoryManager.GetInstance().CreateCategory(category, budget);
         }
 
         // PUT: api/Category/5

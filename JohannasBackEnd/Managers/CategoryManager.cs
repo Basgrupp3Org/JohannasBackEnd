@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using JohannasBackEnd.Domain.DTOs;
 
 namespace JohannasBackEnd.Managers
 {
@@ -25,16 +26,18 @@ namespace JohannasBackEnd.Managers
         {
 
         }
-        public void CreateCategory(Category category)
+        public void CreateCategory(Category category, Budget budget)
         {
            
 
             string users = category.User.UserName;
+           
 
             using (var db = new MyDBContext())
             {
                 var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
                 category.User = person;
+                category.Budget = budget;
                 db.Categories.Add(category);
                 db.SaveChanges();
             }
