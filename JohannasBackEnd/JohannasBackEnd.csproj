@@ -138,6 +138,7 @@
     <Compile Include="Domain\DTOs\PurchaseDateRequestDTO.cs" />
     <Compile Include="Domain\DTOs\PurchaseDTO.cs" />
     <Compile Include="Domain\DTOs\DetailedBudgetDTO.cs" />
+    <Compile Include="Domain\DTOs\SetCategoryOnBudgetDTO.cs" />
     <Compile Include="Domain\Models\Balance.cs" />
     <Compile Include="Domain\Models\Budget.cs" />
     <Compile Include="Domain\Models\Category.cs" />
@@ -146,7 +147,7 @@
     <Compile Include="Domain\Models\Store.cs" />
     <Compile Include="Domain\Models\User.cs" />
     <Compile Include="Domain\MyDBContext.cs" />
-    <Compile Include="Global.asax.cs">      
+    <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\BalanceManager.cs" />
@@ -169,6 +170,10 @@
     <Compile Include="Migrations\202102141913106_CategoryUserConnect.cs" />
     <Compile Include="Migrations\202102141913106_CategoryUserConnect.designer.cs">
       <DependentUpon>202102141913106_CategoryUserConnect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221420094_BudgetListInCategory.cs" />
+    <Compile Include="Migrations\202103221420094_BudgetListInCategory.designer.cs">
+      <DependentUpon>202103221420094_BudgetListInCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -203,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102141913106_CategoryUserConnect.resx">
       <DependentUpon>202102141913106_CategoryUserConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221420094_BudgetListInCategory.resx">
+      <DependentUpon>202103221420094_BudgetListInCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -239,7 +247,6 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
-
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

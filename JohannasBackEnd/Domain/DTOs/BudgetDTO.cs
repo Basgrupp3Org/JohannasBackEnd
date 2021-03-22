@@ -9,6 +9,7 @@ namespace JohannasBackEnd.Domain.DTOs
 {
     public class BudgetDTO
     {
+        public int Id { get; set; }
         public string BudgetName { get; set; }
         public decimal BudgetSum { get; set; }
         public string StartDate { get; set; }

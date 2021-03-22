@@ -11,7 +11,7 @@ namespace JohannasBackEnd.Domain.Models
         public decimal CurrentSpent { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Purchase> Purchases { get; set; }
-        public virtual Budget Budget { get; set; }
+        public virtual ICollection<Budget> Budget { get; set; }
         public virtual User User { get; set; }
     }
 }

@@ -72,6 +72,7 @@ namespace JohannasBackEnd.Managers
                     returnList.Add(
                     new BudgetDTO
                     {
+                        Id = item.Id,
                         BudgetName = item.BudgetName,
                         BudgetSum = item.BudgetSum,
                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
@@ -89,6 +90,16 @@ namespace JohannasBackEnd.Managers
             }
         }
 
+        public void SetCategoryForBudget(SetCategoryOnBudgetDTO dto)
+        {
+            using (var db = new MyDBContext())
+            {
+                var budgets = db.Budgets.Where(x => x.Id == dto.Budget.Id && x.User.UserName == dto.User.UserName).FirstOrDefault();
+                budgets.Categories.Add(dto.Category);
+                db.SaveChanges();
+            }
+        }
+
         public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList(string UserName)
         {
             using (var db = new MyDBContext())
@@ -101,6 +112,7 @@ namespace JohannasBackEnd.Managers
                     returnList.Add(
                     new DetailedBudgetDTO
                     {
+                        Id = item.Id,
                         BudgetName = item.BudgetName,
                         BudgetSum = item.BudgetSum,
                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
