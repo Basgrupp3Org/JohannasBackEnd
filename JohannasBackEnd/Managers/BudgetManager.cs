@@ -77,6 +77,10 @@ namespace JohannasBackEnd.Managers
                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
                         EndDate = item.EndDate.ToString("yyyy-MM-dd"),
                         User = item.User.UserName,
+
+
+                        //Categories = item.Categories
+
                     });
 
                 }

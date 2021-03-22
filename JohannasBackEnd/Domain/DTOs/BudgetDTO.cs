@@ -1,3 +1,4 @@
+
 ﻿using JohannasBackEnd.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -15,4 +16,5 @@ namespace JohannasBackEnd.Domain.DTOs
         // public virtual ICollection<Category> Categories { get; set; }
         public string User { get; set; }
     }
+
 }
