@@ -65,7 +65,8 @@ namespace JohannasBackEnd.Managers
             {
                 var returnList = new List<BudgetDTO>();
                 var budgets = db.Budgets.Where(x => x.User.UserName == UserName).ToList();
-
+               
+               
                 foreach (var item in budgets)
                 {
                     returnList.Add(
@@ -76,11 +77,39 @@ namespace JohannasBackEnd.Managers
                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
                         EndDate = item.EndDate.ToString("yyyy-MM-dd"),
                         User = item.User.UserName,
-                        Categories = item.Categories
+
+
+                        //Categories = item.Categories
+
                     });
 
                 }
 
+                return returnList;
+            }
+        }
+
+        public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList(string UserName)
+        {
+            using (var db = new MyDBContext())
+            {
+                var returnList = new List<DetailedBudgetDTO>();
+                var budgets = db.Budgets.Where(x => x.User.UserName == UserName).ToList();
+
+                foreach (var item in budgets)
+                {
+                    returnList.Add(
+                    new DetailedBudgetDTO
+                    {
+                        BudgetName = item.BudgetName,
+                        BudgetSum = item.BudgetSum,
+                        StartDate = item.StartDate.ToString("yyyy-MM-dd"),
+                        EndDate = item.EndDate.ToString("yyyy-MM-dd"),
+                        Categories = item.Categories,
+                        
+                    });
+                }
+               
                 return returnList;
             }
         }

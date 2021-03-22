@@ -1,3 +1,4 @@
+
 ﻿using JohannasBackEnd.Domain;
 using JohannasBackEnd.Domain.Models;
 using System;
@@ -108,4 +109,5 @@ namespace JohannasBackEnd.Managers
             }
         }
     }
+
 }

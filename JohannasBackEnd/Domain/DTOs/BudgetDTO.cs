@@ -1,3 +1,4 @@
+
 ﻿using JohannasBackEnd.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace JohannasBackEnd.Domain.DTOs
         public decimal BudgetSum { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
-        public virtual ICollection<Category> Categories { get; set; }
+        // public virtual ICollection<Category> Categories { get; set; }
         public string User { get; set; }
     }
+
 }

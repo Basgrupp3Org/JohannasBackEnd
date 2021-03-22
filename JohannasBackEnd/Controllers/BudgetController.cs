@@ -22,6 +22,13 @@ namespace JohannasBackEnd.Controllers
             return BudgetManager.GetInstance().GetBudgetList(UserName);
         }
 
+        [Route("api/Budget/GetDetailedBudgetList")]
+        [HttpPost]
+        public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList([FromBody] string UserName)
+        {
+            return BudgetManager.GetInstance().GetDetailedBudgetList(UserName);
+        }
+
         // GET: api/Budget/5
         public Budget Get(int id)
         {

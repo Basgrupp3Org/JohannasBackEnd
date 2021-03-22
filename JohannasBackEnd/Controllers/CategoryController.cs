@@ -34,7 +34,10 @@ namespace JohannasBackEnd.Controllers
         [HttpPost]
         public void Post([FromBody]Category category)
         {
+
+
             CategoryManager.GetInstance().CreateCategory(category);
+
         }
 
         // PUT: api/Category/5
