@@ -13,7 +13,7 @@ namespace JohannasBackEnd.Domain.DTOs
         public decimal CurrentSpent { get; set; }
         public string Name { get; set; }
         //public virtual ICollection<Purchase> Purchases { get; set; }
-        public virtual Budget Budget { get; set; }
+        public virtual ICollection<Budget> Budgets { get; set; }
         public string User { get; set; }
     }
 }

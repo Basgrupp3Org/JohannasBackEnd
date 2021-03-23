@@ -91,6 +91,7 @@ namespace JohannasBackEnd.Managers
         {
             using (var db = new MyDBContext())
             {
+              
                 var returnList = new List<CategoryDTO>();
                 var categories = db.Categories.Where(c => c.User.UserName == userName).ToList();
 
@@ -104,8 +105,23 @@ namespace JohannasBackEnd.Managers
                         CurrentSpent = item.CurrentSpent,
                         Name = item.Name,
                         User = item.User.UserName,
+                        Budgets = item.Budget,
                     });
                 }
+
+                return returnList;
+            }
+        }
+
+        public IEnumerable<Category> GetCategoryListNoDTO(string userName)
+        {
+            using (var db = new MyDBContext())
+            {
+                var returnList = new List<Category>();
+                var categories = db.Categories.Where(c => c.User.UserName == userName).ToList();
+                returnList = categories;
+
+                
 
                 return returnList;
             }

@@ -14,6 +14,6 @@ namespace JohannasBackEnd.Domain.DTOs
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public virtual ICollection<CategoryDTO> Categories { get; set; }
-       
+        
     }
 }
