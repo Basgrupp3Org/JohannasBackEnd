@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace JohannasBackEnd.Managers
 {
@@ -107,6 +108,11 @@ namespace JohannasBackEnd.Managers
             {
                 var returnList = new List<DetailedBudgetDTO>();
                 var budgets = db.Budgets.Where(x => x.User.UserName == UserName).ToList();
+                var categories = CategoryManager.GetInstance().GetCategoryList(UserName).ToList();
+
+                
+
+
 
                 foreach (var item in budgets)
                 {
@@ -118,11 +124,11 @@ namespace JohannasBackEnd.Managers
                         BudgetSum = item.BudgetSum,
                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
                         EndDate = item.EndDate.ToString("yyyy-MM-dd"),
-                        Categories = item.Categories,
                         
                     });
                 }
-               
+
+
                 return returnList;
             }
         }
