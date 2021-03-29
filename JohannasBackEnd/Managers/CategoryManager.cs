@@ -93,7 +93,7 @@ namespace JohannasBackEnd.Managers
             {
               
                 var returnList = new List<CategoryDTO>();
-                var categories = db.Categories.Where(c => c.User.UserName == userName).ToList();
+                var categories = db.Categories.Where(c => c.User.UserName.ToLower() == userName.ToLower()).ToList();
 
                 foreach (var item in categories)
                 {
@@ -105,7 +105,7 @@ namespace JohannasBackEnd.Managers
                         CurrentSpent = item.CurrentSpent,
                         Name = item.Name,
                         User = item.User.UserName,
-                        Budgets = item.Budget,
+                        //Budgets = item.Budget,
                     });
                 }
 
