@@ -109,34 +109,50 @@ namespace JohannasBackEnd.Managers
                 var returnList = new List<DetailedBudgetDTO>();
                
                 var budgets = db.Budgets
-                    .Where(x => x.User.UserName.ToLower() == UserName.ToLower() && x.Categories.Any())
+                    .Where(x => x.User.UserName.ToLower() == UserName.ToLower())
                     .Include("Categories").ToList();
 
-                foreach (var item in budgets)
+                foreach(var item in budgets)
                 {
-                    var categoryDTOs = new List<CategoryDTO>();
-                    foreach (var category in item.Categories)
+                    if (item.Categories == null)
                     {
-                        categoryDTOs.Add(
-                            new CategoryDTO
+                          returnList.Add(
+                        new DetailedBudgetDTO
+                        {
+                         Id = item.Id,
+                         BudgetName = item.BudgetName,
+                         BudgetSum = item.BudgetSum,
+                         StartDate = item.StartDate.ToString("yyyy-MM-dd"),
+                         EndDate = item.EndDate.ToString("yyyy-MM-dd"),
+                        });
+                    }
+                    else
+                    {
+                            var categoryDTOs = new List<CategoryDTO>();
+                            foreach (var category in item.Categories)
                             {
-                                Name = category.Name,
-                                MaxSpent = category.MaxSpent,
-                                CurrentSpent = category.CurrentSpent,
+                                categoryDTOs.Add(
+                                    new CategoryDTO
+                                    {   Id = category.Id,
+                                        Name = category.Name,
+                                        MaxSpent = category.MaxSpent,
+                                        CurrentSpent = category.CurrentSpent,
+                                    });
+                            }
+                            returnList.Add(
+                            new DetailedBudgetDTO
+                            {
+                                Id = item.Id,
+                                BudgetName = item.BudgetName,
+                                BudgetSum = item.BudgetSum,
+                                StartDate = item.StartDate.ToString("yyyy-MM-dd"),
+                                EndDate = item.EndDate.ToString("yyyy-MM-dd"),
+                                Categories = categoryDTOs,
                             });
                     }
-                    returnList.Add(
-                    new DetailedBudgetDTO
-                    {
-                        Id = item.Id,
-                        BudgetName = item.BudgetName,
-                        BudgetSum = item.BudgetSum,
-                        StartDate = item.StartDate.ToString("yyyy-MM-dd"),
-                        EndDate = item.EndDate.ToString("yyyy-MM-dd"),
-                        Categories = categoryDTOs,
-                    }) ;
-                    
                 }
+
+               
 
                 return returnList;
             }
