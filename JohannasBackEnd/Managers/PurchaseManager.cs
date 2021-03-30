@@ -42,6 +42,24 @@ namespace JohannasBackEnd.Managers
             }
         }
 
+        public void CreatePurchase(CreatePurchaseDTO purchase)
+        {
+            string users = purchase.User.UserName;
+
+            using (var db = new MyDBContext())
+            {
+                var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
+                purchase.User = person;
+
+                var dto = new Purchase
+                {
+
+                };
+                db.Purchases.Add(dto);
+                db.SaveChanges();
+            }
+        }
+
         public void DeletePurchase(int id)
         {
             using (var db = new MyDBContext())
@@ -98,13 +116,10 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var returnList = new List<PurchaseDTO>();
-                var purchases = db.Purchases.Where(x => x.User.UserName == rq.User.UserName).ToList();
+                var purchases = db.Purchases.Where(x => x.User.UserName == rq.User.UserName && x.Date > rq.FromDate && x.Date < rq.ToDate).ToList();
 
                 foreach(var item in purchases)
                 {
-                    if(item.Date > rq.FromDate && item.Date < rq.ToDate)
-                    {
-                        
                             returnList.Add(
                             new PurchaseDTO
                             {
@@ -112,10 +127,8 @@ namespace JohannasBackEnd.Managers
                                 PurchaseName = item.PurchaseName,
                                 Date = item.Date.ToString("yyyy-MM-dd"),
                                 User = item.User.UserName
-                            });
-
-                        
-                    } 
+                            });   
+                   
                 }
 
                 

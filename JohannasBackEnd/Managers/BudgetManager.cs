@@ -108,7 +108,8 @@ namespace JohannasBackEnd.Managers
             {
                 var returnList = new List<DetailedBudgetDTO>();
                 var budgets = db.Budgets.Where(x => x.User.UserName == UserName).ToList();
-                var categories = CategoryManager.GetInstance().GetCategoryList(UserName).ToList();
+
+                //var categories = CategoryManager.GetInstance().GetCategoryList(UserName).ToList();
 
                 
 

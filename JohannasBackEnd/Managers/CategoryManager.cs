@@ -110,6 +110,30 @@ namespace JohannasBackEnd.Managers
                 return returnList;
             }
         }
+
+        public IEnumerable<CategoryDTO> GetCategoryList(CreatePurchaseDTO dto)
+        {
+            using (var db = new MyDBContext())
+            {
+                var returnList = new List<CategoryDTO>();
+                var categories = db.Categories.Where(c => c.Budget == dto.Budget).ToList();
+
+                foreach (var item in categories)
+                {
+                    returnList.Add(
+                    new CategoryDTO
+                    {
+                        Id = item.Id,
+                        MaxSpent = item.MaxSpent,
+                        CurrentSpent = item.CurrentSpent,
+                        Name = item.Name,
+                        User = item.User.UserName,
+                    });
+                }
+
+                return returnList;
+            }
+        }
     }
 
 }
