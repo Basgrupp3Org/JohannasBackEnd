@@ -9,6 +9,7 @@ using System.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using JohannasBackEnd.Domain.DTOs;
+using System.Data.Entity;
 
 namespace JohannasBackEnd.Managers
 {
@@ -117,10 +118,14 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var returnList = new List<CategoryDTO>();
-                var categories = db.Categories.Where(c => c.Budget == dto.Budget).ToList();
+                var categories = db.Categories.Where(c => c.User.UserName == dto.User.UserName)
+                    .Include("Budget")
+                    .Include("Category").ToList();
+                categories.RemoveAll(b => b.Id != dto.Budget.Id);
 
                 foreach (var item in categories)
                 {
+
                     returnList.Add(
                     new CategoryDTO
                     {
