@@ -1,4 +1,5 @@
 
+
 ﻿using JohannasBackEnd.Domain;
 using JohannasBackEnd.Domain.Models;
 using System;
@@ -91,9 +92,8 @@ namespace JohannasBackEnd.Managers
         {
             using (var db = new MyDBContext())
             {
-              
                 var returnList = new List<CategoryDTO>();
-                var categories = db.Categories.Where(c => c.User.UserName.ToLower() == userName.ToLower()).ToList();
+                var categories = db.Categories.Where(c => c.User.UserName == userName).ToList();
 
                 foreach (var item in categories)
                 {
@@ -105,7 +105,6 @@ namespace JohannasBackEnd.Managers
                         CurrentSpent = item.CurrentSpent,
                         Name = item.Name,
                         User = item.User.UserName,
-                        //Budgets = item.Budget,
                     });
                 }
 
@@ -113,19 +112,30 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public IEnumerable<Category> GetCategoryListNoDTO(string userName)
+        public IEnumerable<CategoryDTO> GetCategoryList(CreatePurchaseDTO dto)
         {
             using (var db = new MyDBContext())
             {
-                var returnList = new List<Category>();
-                var categories = db.Categories.Where(c => c.User.UserName == userName).ToList();
-                returnList = categories;
+                var returnList = new List<CategoryDTO>();
+                var categories = db.Categories.Where(c => c.Budget == dto.Budget).ToList();
 
-                
+                foreach (var item in categories)
+                {
+                    returnList.Add(
+                    new CategoryDTO
+                    {
+                        Id = item.Id,
+                        MaxSpent = item.MaxSpent,
+                        CurrentSpent = item.CurrentSpent,
+                        Name = item.Name,
+                        User = item.User.UserName,
+                    });
+                }
 
                 return returnList;
             }
         }
     }
+
 
 }

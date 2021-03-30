@@ -44,7 +44,7 @@ namespace JohannasBackEnd.Controllers
         }
 
         // POST: api/Purchase
-        public void Post([FromBody]Purchase purchase)
+        public void Post([FromBody]CreatePurchaseDTO purchase)
         {
             PurchaseManager.GetInstance().CreatePurchase(purchase);
         }

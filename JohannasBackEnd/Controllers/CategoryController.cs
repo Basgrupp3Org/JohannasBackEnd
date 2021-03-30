@@ -14,6 +14,14 @@ namespace JohannasBackEnd.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoryController : ApiController
     {
+
+        [Route("api/Category/GetCategoryForPurchase")]
+        [HttpPost]
+        public IEnumerable<CategoryDTO> Get([FromBody] CreatePurchaseDTO dto)
+        {
+            return CategoryManager.GetInstance().GetCategoryList(dto);
+        }
+
         // GET: api/Category
         [Route("api/Category/GetCategoryList")]
         [HttpPost]

@@ -112,6 +112,7 @@ namespace JohannasBackEnd.Managers
                     .Where(x => x.User.UserName.ToLower() == UserName.ToLower())
                     .Include("Categories").ToList();
 
+
                 foreach(var item in budgets)
                 {
                     if (item.Categories == null)
