@@ -49,11 +49,15 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
-                purchase.User = person;
-
+                var category = db.Categories.Where(x => x.Id == purchase.Category.Id).FirstOrDefault();
+                var dateTime = DateTime.Parse(purchase.Date);
                 var dto = new Purchase
                 {
-
+                    Price = purchase.Price,
+                    PurchaseName = purchase.PurchaseName,
+                    Date = dateTime,
+                    Category = category,
+                    User = person,
                 };
                 db.Purchases.Add(dto);
                 db.SaveChanges();

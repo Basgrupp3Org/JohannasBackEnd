@@ -12,7 +12,7 @@ namespace JohannasBackEnd.Domain.DTOs
         public string PurchaseName { get; set; }
         public string Date { get; set; }
         public User User { get; set; }
-
+        public Category Category { get; set; }
         public Budget Budget { get; set; }
 
     }
