@@ -136,6 +136,7 @@
     <Compile Include="Domain\DTOs\CategoryDTO.cs" />
     <Compile Include="Domain\DTOs\CreatePurchaseDTO.cs" />
     <Compile Include="Domain\DTOs\DeleteCategoryRequestDTO.cs" />
+    <Compile Include="Domain\DTOs\PurchaseCategoryRequestDTO.cs" />
     <Compile Include="Domain\DTOs\PurchaseDateRequestDTO.cs" />
     <Compile Include="Domain\DTOs\PurchaseDTO.cs" />
     <Compile Include="Domain\DTOs\DetailedBudgetDTO.cs" />
