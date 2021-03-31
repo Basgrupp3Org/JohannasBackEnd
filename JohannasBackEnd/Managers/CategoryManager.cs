@@ -46,6 +46,8 @@ namespace JohannasBackEnd.Managers
             }
         }
 
+    
+
         public void DeleteCategory(DeleteCategoryRequestDTO rq)
         {
 
@@ -118,29 +120,32 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var returnList = new List<CategoryDTO>();
-                var categories = db.Categories.Where(c => c.User.UserName == dto.User.UserName)
-                    .Include("Budget")
-                    .Include("Category").ToList();
-                categories.RemoveAll(b => b.Id != dto.Budget.Id);
+                //var budget = db.Budgets.Where(x => x.BudgetName == dto.Budget.BudgetName)
+                //    .Include("Categories").ToList();
 
-                foreach (var item in categories)
-                {
+                var categories = db.Categories.Where(c => c.Budget.Where(b => b.Id == dto.Budget.Id).Any()).ToList();
 
-                    returnList.Add(
-                    new CategoryDTO
+
+                    foreach(var category in categories)
                     {
-                        Id = item.Id,
-                        MaxSpent = item.MaxSpent,
-                        CurrentSpent = item.CurrentSpent,
-                        Name = item.Name,
-                        User = item.User.UserName,
-                    });
-                }
+                        returnList.Add(
+                       new CategoryDTO
+                       {
+                       Id = category.Id,
+                       MaxSpent = category.MaxSpent,
+                       CurrentSpent = category.CurrentSpent,
+                       Name = category.Name,
+                       User = category.User.UserName,
+                      });
+                    }
+                   
+                
 
                 return returnList;
             }
         }
     }
+
 
 
 }
