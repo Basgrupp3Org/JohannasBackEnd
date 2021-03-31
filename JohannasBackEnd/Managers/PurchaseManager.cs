@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace JohannasBackEnd.Managers
 {
@@ -136,6 +137,39 @@ namespace JohannasBackEnd.Managers
                 }
 
                 
+
+                return returnList;
+
+            }
+
+        }
+
+        public IEnumerable<PurchaseDTO> GetAllPurchases(PurchaseCategoryRequestDTO rq)
+        {
+
+            using (var db = new MyDBContext())
+            {
+                var returnList = new List<PurchaseDTO>();
+                //var purchases = db.Purchases.Where(p => p.Category.Where().ToList();
+
+                var purchases = db.Purchases.Where(c => c.Category.Id == rq.Category.Id)
+                    .Include("Category")
+                    .ToList();
+
+                foreach (var item in purchases)
+                {
+                    returnList.Add(
+                    new PurchaseDTO
+                    {
+                        Price = item.Price,
+                        PurchaseName = item.PurchaseName,
+                        Date = item.Date.ToString("yyyy-MM-dd"),
+                        User = item.User.UserName
+                    });
+
+                }
+
+
 
                 return returnList;
 

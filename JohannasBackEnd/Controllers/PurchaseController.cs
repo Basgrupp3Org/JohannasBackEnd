@@ -36,6 +36,14 @@ namespace JohannasBackEnd.Controllers
             return PurchaseManager.GetInstance().GetAllPurchases(rq);
         }
 
+        // GET: api/Purchase
+        [Route("api/Purchase/GetPurchaseListByCategory")]
+        [HttpPost]
+        public IEnumerable<PurchaseDTO> Get([FromBody] PurchaseCategoryRequestDTO rq)
+        {
+            return PurchaseManager.GetInstance().GetAllPurchases(rq);
+        }
+
         // GET: api/Purchase/5
         public Purchase Get(int id)
         {

@@ -120,8 +120,7 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var returnList = new List<CategoryDTO>();
-                //var budget = db.Budgets.Where(x => x.BudgetName == dto.Budget.BudgetName)
-                //    .Include("Categories").ToList();
+             
 
                 var categories = db.Categories.Where(c => c.Budget.Where(b => b.Id == dto.Budget.Id).Any()).ToList();
 
