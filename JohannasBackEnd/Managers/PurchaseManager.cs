@@ -91,7 +91,9 @@ namespace JohannasBackEnd.Managers
             using (var db = new MyDBContext())
             {
                 var returnList = new List<PurchaseDTO>();
-                var purchases = db.Purchases.Where(x => x.User.UserName == userName).ToList();
+                var purchases = db.Purchases.Where(x => x.User.UserName == userName)
+                    .Include("Category")
+                    .ToList();
 
                 foreach(var item in purchases)
                 {
@@ -101,7 +103,9 @@ namespace JohannasBackEnd.Managers
                         Price = item.Price,
                         PurchaseName = item.PurchaseName,
                         Date = item.Date.ToString("yyyy-MM-dd"),
-                        User = item.User.UserName
+                        User = item.User.UserName,
+                        Category = item.Category.Name
+
                     });
 
                 }
