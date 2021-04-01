@@ -25,15 +25,15 @@ namespace JohannasBackEnd.Controllers
         [AcceptVerbs("GET", "POST")]
         [Route("api/Budget/GetDetailedBudgetList")]
       
-        public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList([FromBody] string UserName)
+        public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList([FromBody] int id)
         {
-            return BudgetManager.GetInstance().GetDetailedBudgetList(UserName);
+            return BudgetManager.GetInstance().GetDetailedBudgetList(id);
         }
 
         // GET: api/Budget/5
-        public Budget Get(int id)
+        public IEnumerable<DetailedBudgetDTO> Get(int id)
         {
-            var budget = BudgetManager.GetInstance().GetBudgetById(id);
+            var budget = BudgetManager.GetInstance().GetDetailedBudgetList(id);
             return budget;
         }
         

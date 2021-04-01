@@ -102,14 +102,14 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList(string UserName)
+        public IEnumerable<DetailedBudgetDTO> GetDetailedBudgetList(int id)
         {
             using (var db = new MyDBContext())
             {
                 var returnList = new List<DetailedBudgetDTO>();
                
                 var budgets = db.Budgets
-                    .Where(x => x.User.UserName.ToLower() == UserName.ToLower())
+                    .Where(x => x.Id == id)
                     .Include("Categories").ToList();
 
 
