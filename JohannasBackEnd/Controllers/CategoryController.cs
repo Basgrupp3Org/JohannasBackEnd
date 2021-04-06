@@ -31,7 +31,7 @@ namespace JohannasBackEnd.Controllers
         }
 
         // GET: api/Category/5
-        public Category Get(int id)
+        public CategoryDTO Get(int id)
         {
             var category = CategoryManager.GetInstance().GetCategoryById(id);
             return category;
@@ -50,7 +50,8 @@ namespace JohannasBackEnd.Controllers
 
         // PUT: api/Category/5
         [HttpPut]
-        public void Put([FromBody] Category category)
+        [Route("api/EditCategory/")]
+        public void Put([FromBody] EditCategoryDTO category)
         {
             CategoryManager.GetInstance().UpdateCategory(category);
         }

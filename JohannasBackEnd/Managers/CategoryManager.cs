@@ -63,18 +63,28 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public Category GetCategoryById(int id)
+        public CategoryDTO GetCategoryById(int id)
         {
             using (var db = new MyDBContext())
             {
                 var category = db.Categories.Find(id);
-                return category;
+
+                return new CategoryDTO
+                {
+                    Id = category.Id,
+                    MaxSpent = category.MaxSpent,
+                    CurrentSpent = category.CurrentSpent,
+                    Name = category.Name,
+                    User = category.User.UserName
+
+                };
+                
             }
         }
 
        
 
-        public void UpdateCategory(Category category)
+        public void UpdateCategory(EditCategoryDTO category)
         {
             using (var db = new MyDBContext())
             {
@@ -83,7 +93,6 @@ namespace JohannasBackEnd.Managers
                 if (existingCategory != null)
                 {
                     existingCategory.MaxSpent = category.MaxSpent;
-                    existingCategory.CurrentSpent = category.CurrentSpent;
                     existingCategory.Name = category.Name;
 
                     db.SaveChanges();
