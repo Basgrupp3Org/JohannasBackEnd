@@ -91,14 +91,18 @@ namespace JohannasBackEnd.Managers
             }
         }
 
-        public void SetCategoryForBudget(SetCategoryOnBudgetDTO dto)
+        public bool SetCategoryForBudget(SetCategoryOnBudgetDTO dto)
         {
             using (var db = new MyDBContext())
             {
                 var budgets = db.Budgets.Where(x => x.Id == dto.Budget.Id && x.User.UserName == dto.User.UserName).FirstOrDefault();
                 var category = db.Categories.Where(x => x.Id == dto.Category.Id && x.User.UserName == dto.User.UserName).FirstOrDefault();
+                budgets.BudgetSum += category.MaxSpent;
+
+                
                 budgets.Categories.Add(category);
                 db.SaveChanges();
+                return true;
             }
         }
 

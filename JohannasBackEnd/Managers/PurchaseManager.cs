@@ -51,6 +51,7 @@ namespace JohannasBackEnd.Managers
             {
                 var person = db.Users.Where(u => u.UserName == users).FirstOrDefault();
                 var category = db.Categories.Where(x => x.Id == purchase.Category.Id).FirstOrDefault();
+                category.CurrentSpent += purchase.Price;
                 var dateTime = DateTime.Parse(purchase.Date);
                 var dto = new Purchase
                 {
@@ -134,6 +135,7 @@ namespace JohannasBackEnd.Managers
                             {
                                 Price = item.Price,
                                 PurchaseName = item.PurchaseName,
+                                Category = item.Category.Name,
                                 Date = item.Date.ToString("yyyy-MM-dd"),
                                 User = item.User.UserName
                             });   
@@ -167,6 +169,7 @@ namespace JohannasBackEnd.Managers
                     {
                         Price = item.Price,
                         PurchaseName = item.PurchaseName,
+                        Category = item.Category.Name,
                         Date = item.Date.ToString("yyyy-MM-dd"),
                         User = item.User.UserName
                     });
