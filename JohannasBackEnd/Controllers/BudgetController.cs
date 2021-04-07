@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Threading.Tasks;
 
 namespace JohannasBackEnd.Controllers
 {
@@ -46,9 +47,13 @@ namespace JohannasBackEnd.Controllers
         }
         [Route("api/Budget/SetCategoryForBudget")]
         [HttpPost]
-        public void SetCategoryForBudget([FromBody] SetCategoryOnBudgetDTO x)
+        public bool SetCategoryForBudget([FromBody] SetCategoryOnBudgetDTO x)
         {
-            BudgetManager.GetInstance().SetCategoryForBudget(x);
+           bool z = BudgetManager.GetInstance().SetCategoryForBudget(x);
+
+            return z;
+
+
         }
 
         // PUT: api/Budget/5
