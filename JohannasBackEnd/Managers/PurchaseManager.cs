@@ -86,17 +86,18 @@ namespace JohannasBackEnd.Managers
                 return purchase;
             }
         }
-        public IEnumerable<PurchaseDTO> GetAllPurchases(string userName)
+        public IEnumerable<PurchaseDTO> GetAllPurchases(UserDTO rq)
         {
-            
+
             using (var db = new MyDBContext())
             {
+                var user = db.Users.Where(x => x.UserName == rq.UserName).FirstOrDefault();
                 var returnList = new List<PurchaseDTO>();
-                var purchases = db.Purchases.Where(x => x.User.UserName == userName)
-                    .Include("Category")
+                var purchases = db.Purchases.Where(x => x.User.Id == user.Id)
+                    //.Include("Category")
                     .ToList();
 
-                foreach(var item in purchases)
+                foreach (var item in purchases)
                 {
                     returnList.Add(
                     new PurchaseDTO
@@ -114,10 +115,33 @@ namespace JohannasBackEnd.Managers
                 return returnList;
 
 
+                //{
+
+                //    //var purchases = db.Purchases.Where(p => p.Category.Where().ToList();
+
+                //    var purchases = db.Purchases.Where(c => c.Category.Id == rq.Category.Id)
+                //        .Include("Category")
+                //        .ToList();
+
+                //    foreach (var item in purchases)
+                //    {
+                //        returnList.Add(
+                //        new PurchaseDTO
+                //        {
+                //            Price = item.Price,
+                //            PurchaseName = item.PurchaseName,
+                //            Category = item.Category.Name,
+                //            Date = item.Date.ToString("yyyy-MM-dd"),
+                //            User = item.User.UserName
+                //        });
+
+                //    }
+
+
 
 
             }
-           
+               
         }
 
         public IEnumerable<PurchaseDTO> GetAllPurchases(PurchaseDateRequestDTO rq)

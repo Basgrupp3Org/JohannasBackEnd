@@ -23,9 +23,9 @@ namespace JohannasBackEnd.Controllers
         // GET: api/Purchase
         [Route("api/Purchase/GetPurchaseList")]
         [HttpPost]
-        public IEnumerable<PurchaseDTO> Get([FromBody] string userName)
+        public IEnumerable<PurchaseDTO> Get([FromBody] UserDTO rq)
         {
-           return PurchaseManager.GetInstance().GetAllPurchases(userName);
+           return PurchaseManager.GetInstance().GetAllPurchases(rq);
         }
 
         // GET: api/Purchase
