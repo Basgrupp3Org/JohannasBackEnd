@@ -94,7 +94,7 @@ namespace JohannasBackEnd.Managers
                 var user = db.Users.Where(x => x.UserName == rq.UserName).FirstOrDefault();
                 var returnList = new List<PurchaseDTO>();
                 var purchases = db.Purchases.Where(x => x.User.Id == user.Id)
-                    //.Include("Category")
+                    .Include("Category")
                     .ToList();
 
                 foreach (var item in purchases)
