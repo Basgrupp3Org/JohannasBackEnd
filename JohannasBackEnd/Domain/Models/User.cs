@@ -13,6 +13,8 @@ namespace JohannasBackEnd.Domain.Models
         [StringLength(20)]
         [Index(IsUnique=true)]
         public string UserName { get; set; }
+
+       public decimal BalanceUser { get; set; }
         public virtual ICollection<Balance> Balance { get; set; }
         public virtual ICollection<Purchase> Purchases { get; set; }
         public virtual ICollection<Budget> Budgets { get; set; }
